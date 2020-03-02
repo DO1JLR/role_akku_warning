@@ -1,19 +1,20 @@
 ---
-# which user are we currently using?
-akku_user: "{{ ansible_user_id }}"
+akku_warning:
+  user: "{{ ansible_user_id }}"
 
-# which sound should we play?
-akku_sound_src: 'files/low_battery.m4a'
-akku_sound_dest: '/opt/low_battery.m4a'
+  script_dest: '/opt/akku.sh'
 
-# should we install cronie?
-install_and_enable_cronie: true
+  # should we support a multimedia warning
+  multimedia_support: true
+  multimedia:
+    sound_src: 'files/low_battery.m4a'
+    sound_dest: '/opt/low_battery.m4a'
 
-# play a video in the background with sound
-multimedia_akku_warning: true
+  install_and_enable_cronie: true
 
-# you want to install missing packages?
-manage_packages_akku_warning: true
+  manage_packages: true
 
-# version check for this playbook
-submodules_versioncheck: true
+  display_address: ':0.0'
+
+# should we use a simple versionscheck (true is recomended)
+submodules_versioncheck: false
