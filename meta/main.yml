@@ -4,7 +4,7 @@ galaxy_info:
   description: Get a popup if the akku is getting low, get a warning sound, if the akku is even lower.
   role_name: akku_warning
   license: MIT
-  min_ansible_version: 2.3
+  min_ansible_version: 2.4
   github_branch: master
   platforms:
     - name: Archlinux
@@ -14,10 +14,16 @@ galaxy_info:
         - all
     - name: Ubuntu
       versions:
-        - all
-    - name: Fedora
-      versions:
-        - all
+        - bionic
+        - disco
+        - eoan
+        - focal
+        - trusty
+        - xenial
+# currently not checked
+#    - name: Fedora
+#      versions:
+#        - all
   galaxy_tags:
     - akku
     - warning
