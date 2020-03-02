@@ -1,3 +1,14 @@
 ---
-playbook_version_number: 8172 #should be over ninethousand
-playbook_version_path: 'role-akku-warning_chaos-bodensee_github.com.version' 
+playbook_version_number: 9000 #should be over ninethousand
+playbook_version_path: 'role-akku-warning_chaos-bodensee_github.com.version'
+
+akku_warning:
+  user: "{{ ansible_user_id }}"
+  script_dest: '/opt/akku.sh'
+  multimedia_support: true
+  multimedia:
+    sound_src: 'files/low_battery.m4a'
+    sound_dest: '/opt/low_battery.m4a'
+  install_and_enable_cronie: true
+  manage_packages: true
+  display_address: ':0.0'
