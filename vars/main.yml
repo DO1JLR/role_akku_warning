@@ -1,8 +1,8 @@
 ---
-playbook_version_number: 9000 #should be over ninethousand
+playbook_version_number: 9001 #should be over ninethousand
 playbook_version_path: 'role-akku-warning_chaos-bodensee_github.com.version'
 
-akku_warning:
+_akku_warning:
   user: "{{ ansible_user_id }}"
   script_dest: '/opt/akku.sh'
   multimedia_support: true
