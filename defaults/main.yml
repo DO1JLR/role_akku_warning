@@ -7,7 +7,7 @@ akku_sound_src: 'files/low_battery.m4a'
 akku_sound_dest: '/opt/low_battery.m4a'
 
 # should we install cronie?
-install_and_enable_cronie: false
+install_and_enable_cronie: true
 
 # play a video in the background with sound
 multimedia_akku_warning: true

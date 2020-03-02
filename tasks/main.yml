@@ -17,7 +17,7 @@
   become: true
   package:
     name:
-      - cronie
+      - cron
     state: present
   when:
     - manage_packages_akku_warning | bool
@@ -31,12 +31,3 @@
     minute: '*/3'
     user: '{{ akku_user }}'
     cron_file: /etc/crontab
-
-- name: Make sure cron is running
-  become: true
-  when: install_and_enable_cronie | bool
-  systemd:
-    name: cronie.service
-    state: started
-    enabled: yes
-    daemon_reload: yes
