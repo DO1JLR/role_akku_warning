@@ -1,0 +1,19 @@
+---
+- name: install zenity and mpv for notifications
+  become: yes
+  package:
+    name:
+      - zenity
+      - mpv
+    state: present
+  when: akku_warning.manage_packages | bool
+
+- name: Make sure cron is installed
+  become: true
+  package:
+    name:
+      - cron
+    state: present
+  when:
+    - akku_warning.manage_packages | bool
+    - akku_warning.install_and_enable_cronie | bool

@@ -1,18 +1,9 @@
 ---
-- name: copy sound warning script
-  become: yes
-  template:
-    src: 'templates/akku.sh'
-    dest: '/opt/akku.sh'
-    owner: 'root'
-    group: 'root'
-    mode: '0755'
-
 - name: copy sound warning video
   become: yes
   copy:
-    src: "{{ akku_sound_src }}"
-    dest: "{{ akku_sound_dest }}"
+    src: "{{ akku_warning.multimedia.sound_src }}"
+    dest: "{{ akku_warning.multimedia.sound_dest }}"
     owner: 'root'
     group: 'root'
     mode: '0644'

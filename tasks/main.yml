@@ -1,27 +1,25 @@
 ---
+- name: combine akku_warning config
+  set_fact:
+    akku_warning: "{{ _akku_warning|combine(akku_warning, recursive=True) }}"
+
 - include_tasks: versioncheck.yml
   when: submodules_versioncheck|bool
 
-- include_tasks: copy_media_files.yml
-
-- name: install zenity and mpv for notifications
+- name: copy sound warning script
   become: yes
-  package:
-    name:
-      - zenity
-      - mpv
-    state: present
-  when: manage_packages_akku_warning | bool
+  template:
+    src: 'templates/akku.sh'
+    dest: "{{ akku_warning.script_dest }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
 
-- name: Make sure cron is installed
-  become: true
-  package:
-    name:
-      - cron
-    state: present
-  when:
-    - manage_packages_akku_warning | bool
-    - install_and_enable_cronie | bool
+- include_tasks: copy_media_files.yml
+  when: akku_warning.multimedia_support | bool
+
+- include_tasks: install_packages.yml
+  when: akku_warning.manage_packages | bool
 
 - name: Check akku every 2 minutes
   become: yes
@@ -29,5 +27,5 @@
     name: check if akku still okay
     job: /opt/akku.sh
     minute: '*/3'
-    user: '{{ akku_user }}'
+    user: '{{ akku_warning.user }}'
     cron_file: /etc/crontab
