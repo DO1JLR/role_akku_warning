@@ -6,9 +6,8 @@ _akku_warning:
   user: "{{ ansible_user_id }}"
   script_dest: '/opt/akku.sh'
   multimedia_support: true
-  multimedia:
-    sound_src: 'files/low_battery.m4a'
-    sound_dest: '/opt/low_battery.m4a'
+  sound_src: 'files/low_battery.m4a'
+  sound_dest: '/opt/low_battery.m4a'
   install_and_enable_cronie: true
   manage_packages: true
   display_address: ':0.0'

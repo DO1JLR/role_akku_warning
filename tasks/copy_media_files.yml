@@ -2,9 +2,8 @@
 - name: copy sound warning video
   become: yes
   copy:
-    src: "{{ akku_warning.multimedia.sound_src }}"
-    dest: "{{ akku_warning.multimedia.sound_dest }}"
+    src: "{{ akku_warning.sound_src }}"
+    dest: "{{ akku_warning.sound_dest }}"
     owner: 'root'
     group: 'root'
     mode: '0644'
-  when: multimedia_akku_warning | bool

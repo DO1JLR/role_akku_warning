@@ -22,20 +22,24 @@ This role requires superuser privileges for the following tasks:
 -----------
 ```yaml
 akku_warning:
+  # the user that should recive the warning messages
   user: "{{ ansible_user_id }}"
 
+  # where is our script stored?
   script_dest: '/opt/akku.sh'
 
   # should we support a multimedia warning
   multimedia_support: true
-  multimedia:
-    sound_src: 'files/low_battery.m4a'
-    sound_dest: '/opt/low_battery.m4a'
+  sound_src: 'files/low_battery.m4a'
+  sound_dest: '/opt/low_battery.m4a'
 
+  # should we create a cronjob for this script?
   install_and_enable_cronie: true
 
+  # should we install packages?
   manage_packages: true
 
+  # address of our display
   display_address: ':0.0'
 
 # should we use a simple versionscheck (true is recomended)
